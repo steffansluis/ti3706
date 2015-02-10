@@ -1,0 +1,111 @@
+\documentclass[oneside]{book}
+
+\usepackage{fullpage,hyperref,titlesec,enumerate,babelbib,graphicx,float}
+\usepackage[english]{babel}
+\usepackage{titlesec} % required for removing header spacing
+
+% remove header spacing
+\titlespacing\section{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+\titlespacing\subsection{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+\titlespacing\subsubsection{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+
+% remove all indents
+\setlength{\parindent}{0pt}
+
+% Add all chapter folders to graphics path
+\graphicspath{
+% {./introduction/}
+}
+
+\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter. }{0pt}{\Huge\bfseries}
+
+\begin{document}
+\frontmatter
+%%% TITELPAGE %%%
+
+\begin{titlepage}
+
+\begin{center}
+\begin{figure}[h!]
+\centering
+% Title image
+% \includegraphics[scale=1]{Images/TU_P2_black.png}
+\end{figure}
+Faculty of Applied Physics \\
+January 17th, 2014
+
+\vspace{3.5cm}
+\selectfont
+{\Large TN3706 - Bachelor Seminar}\\
+\vspace{0.0cm}
+\Huge{\textbf{Performance Regression Testing\\ \[subtitle here\]}}
+\vspace{0.5cm}
+\selectfont
+
+\vspace{5cm}
+\normalsize{\textbf{Bachelor Seminar Group}}
+
+\begin{tabular}{ l r}
+\normalsize{M.A. Hoppenbrouwer} & \normalsize{[studienr]} \\
+\normalsize{M.J. Otte} & \normalsize{[studienr]} \\
+\normalsize{R.S. Sluis} & \normalsize{4088816} \\
+\normalsize{R. Vink} & \normalsize{[studienr]}\\
+\end{tabular}
+
+\vspace{0.75cm}
+
+\begin{tabular}{ l l }
+\normalsize{M. Loog} & \normalsize{Professor} \\
+\normalsize{C. Bezemer} & \normalsize{Supervisor} \\
+\end{tabular}
+
+\end{center}
+\end{titlepage}
+
+\chapter{Preface}
+% \input{preface/preface}
+
+\chapter{Summary}
+% \input{summary/summary}
+
+\clearpage % To point the bookmark to the top of the page
+\pdfbookmark{\contentsname}{toc}
+\tableofcontents
+
+\clearpage % To point the bookmark to the top of the page
+\pdfbookmark{\listfigurename}{lof}
+\listoffigures
+
+\clearpage % To point the bookmark to the top of the page
+\pdfbookmark{\listtablename}{lot}
+\listoftables
+
+\mainmatter
+%  INTRODUCTION
+% \input{introduction/introduction.tex}
+
+
+\chapter{Chapter 1}
+\label{chapter:first}
+
+This is an example. \cite{Sample_book}.
+
+% CONCLUSION
+\newpage
+% \input{conclusion/conclusion.tex}
+
+% Appendices
+\appendix
+
+
+% END appendices
+
+\backmatter
+
+\phantomsection
+\addcontentsline{toc}{chapter}{\bibname}
+
+\bibliographystyle{unsrt}
+\bibliography{bibliography}
+
+\end{document}
