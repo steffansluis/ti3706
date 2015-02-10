@@ -32,3 +32,6 @@
 
 # Editor files
 *.sublime-*
+
+# Pdf's in src folder
+src/*.pdf
