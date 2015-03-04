@@ -14,7 +14,7 @@
 
 % Add all chapter folders to graphics path
 \graphicspath{
-% {./introduction/}
+ {./profiling/}
 }
 
 \titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter. }{0pt}{\Huge\bfseries}
@@ -85,15 +85,21 @@ Faculty of Computer Science \\
 % \input{introduction/introduction.tex}
 
 
-\chapter{Chapter 1}
-\label{chapter:first}
+\chapter{Definition of PRT}
+\label{chapter:definition}
+\input{definition/definition.tex}
 
-This chapter discusses how perfomance counters can give information about the quality of software. Performance counters are a type of data output as a result of performance regression testing. This can be e.g. CPU usage, memory usage or disk IO time.
+\chapter{Time of Performing PRT}
+\label{chapter:timeline}
+\input{timeline/timeline.tex}
 
-To detect if performance regression occurs, the results of the previous and the current performance regression test need to be compared.
+\chapter{Performance Counters}
+\label{chapter:performancecounters}
+\input{performancecounters/performancecounters.tex}
 
-
-
+\chapter{Profiling}
+\label{chapter:profiling}
+\input{profiling/profiling.tex}
 
 % CONCLUSION
 \newpage
