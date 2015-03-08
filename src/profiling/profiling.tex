@@ -1,7 +1,7 @@
-The following section describes the role of profiling in performance regression testing. The first section explains what profiling is and how it can be applied to draw meaningful conclusions about large volume of results produced by performance regression testing.
+The following section describes the role of profiling in performance regression testing. The first section explains what profiling is and how it can be applied to draw meaningful conclusions about the large volume of results produced by performance regression testing.
 
 \section{The role of profiling}
-Profiling plays an important part in performance regression testing. As described in Chapter [link here], a lot of data is produced when a software application is submitted to performance tests. Chapter [link here] discusses the use of performance counters to separate the significant parts of that data from the bulk of it. The next step is making sense of this data, which is where profiling comes in. To understand what profiling is and how it is used, a few perspectives on performance profiling are provided first.
+Profiling plays an important part in performance regression testing. As described in Chapter \ref{chapter:performancecounters}, a lot of data is produced when a software application is submitted to performance tests. Chapter \ref{chapter:performancecounters} also discusses the use of performance counters to separate the significant parts of that data from the bulk of it. The next step is making sense of this data, which is where profiling comes in. To understand what profiling is and how it is used, a few perspectives on performance profiling are provided first.
 
 \subsection{Different uses of profiling}
 Bezemer et al. look into creating a comparable profile of the performance of a piece of software \cite{io_regressions}. In particular they focus on guiding performance optimization when there are factors in play such as multiple software languages and varying test performance due to system resources being (un)available during some tests, but not others.
@@ -11,7 +11,8 @@ Ghaith et al. use profiling as a way to model the performance of a system, parti
 The common factor in the different uses of profiling discussed above is the following: a performance profile can be used to track performance changes over different releases, detect performance regressions and identify the responsible factors in the corresponding software. The prerequisite to this is that the profile has to be comparable, and thus representative of its software counterpart, which for the remainder of this chapter will be assumed to be the case since a non-comparable profile would serve no purpose in performance regression testing.
 
 \subsection{Profiling in relation to performance regression testing}
+Profiling plays a recurring role in performance regression testing. The previous section illustrates that profiling can serve as a means of approximating the expected performance of a system \cite{profile_based_detection}\cite{performance_puzzles} and can also be used as a way to create a signature of a piece of software. These signatures can then be compared to determine if performance regression has occured, and even to trace the cause of the regression.
 
 
-\section{Profiling techniques and factors}
+% \section{Profiling techniques and factors}
 
