@@ -1,4 +1,4 @@
-This chapter will explain how the gathering of useful data will be done. First it will expalin the organising aspects, where the second part is about how to present data in the form of performance counters.
+This chapter will explain how the gathering of useful data will be done. First it will explain the organising aspects, where the second part is about how to present data in the form of performance counters.
 \section{Method of development}
 Software development processes have different methods of software development. Different types of development mean different types of testing, so it is important to choose a proper development process before a team starts implementing. This section show different types of development and how to do performance regression testing on those methods.
 \subsection{Code-and-fix model}
@@ -7,8 +7,29 @@ Software development processes have different methods of software development. D
 \subsection{Waterfall method}
 ``The waterfall method establishes a sequence of stages-requirements, specifications, design, coding, testing and maintenance-to guide the development process. ''\cite{kang1989software}. This method of development and even became the basis for most software acquisition standards. \cite{boehm1988spiral}. The waterfall method can be a good method to test performance regressions. Collins et al researched an iterative waterfall process. \cite{collins2010iterative} The research showed that, when using an iterative process, regression testing using the waterfall method can be very effective. 
 \subsection{Spiral metod}
+<<<<<<< HEAD
 ``The spiral method creates a risk-driven approach to the software process rather than a primarily document-driven or code-driven process. It incorporates many of the strengths
 of other models and resolves many of their
 difficulties.''\cite{boehm1988spiral} When using the spiral model, the main focus is the different risks of a software project. Examples of these risks are: low budget, developing wrong functions or a continous change of functions. These development processes are divided by the property of these risks. So performance regression testing would not be a appropriate for the spiral method, because performance regression tests are not a risk fact.  
 \subsection{Scrum} 
 ``Scrum is an Agile software development process designed to add energy, focus, clarity, and transparency to project teams developing software systems.''\cite{sutherland2007distributed} A scrum development process is divided into three kind of phases. Research has been done to show that automated regression tests during the daily builds will greatly improve the quality of the product \cite{Future_of_Scrum}. This means that scrum is a useful development method for performance regression testing. \\ There are two organising phases, which are the opening and closing phases and the last phase is the sprint phase which is further divided. The planning and closing phases are organising phases. It is not necessary to run tests here, because there is either no code (opening) or all the performance regression tests have been runned and approved (closing). Though, Planning the test suite is an example of an organising aspect which can be done during the opening phase and verifying that the test suite contains all the tests can be done during the closing phase. \\ The actual implementing will be done during the sprints. The sprints consist of developing, wrapping, reviewing and adjusing. The wrapping part of the sprint, combines all the implemented code. This process of wrapping is a very appropriate way to test for performance regressions.
+=======
+\subsection{Scrum}
+
+\section{Performance Counters}``Performance counters are used to measure events that occur events that occur duing program execution.''\cite{PC} Think of events like the number of instructions, loads, bandwidth or the number of executed cycles.
+
+``The goal of analyzing performance counters is to detect if a performance regression has occured, where the performance regression has occured, and what causes the regression.'' \cite{nguyen2012using}
+
+To detect if performance regression occurs, two tests will be run: a target run and a baseline run. The target run is the new test run, where the baseline run is a good past run. On both tests equivalent performance counters can be used as input to detect if performance regression has occured by comparing the output of the tests. Comparing the output of the tests is a big challenge, especially in big complex software systems.
+
+If it is known that performance regression has occured, the next problem is to detect where the performance regression has occured. Big software systems consist of many types of components, and each component may have many instances. Detecting where the perfomance regression has occured is very difficult, because there are many performance counters for each instance of each component. This can be very time consuming.
+
+After determining the location of the performance regression, the reason of the performance regression needs to be determined. ``Understanding the kind of problem usually requires static analysis of source code.'' \cite{nguyen2012using}
+
+The fact that performance counters are often used by application developers shows that performance counters are very useful. However, performance counters arn't that accurate. Tests with different interfaces (perfmon2 and perfctr) and different counter configurations (user and user+kernel) show that for the combination of the perfmon2 interface and user+kernel configuration the measurement error increases as the number of registers increases as well. \cite{AccuracyPerformanceCounter}
+Also, the type of infrastructure is very dependent. The measurement error reduces a lot when a low-level infrastructure is used, instead of a high-level infrastructure.
+On top of that, for the user+kernel mode the measurement error gets bigger if the duration of the benchmark gets longer. \cite{AccuracyPerformanceCounter} So to make the measurement error smaller, less loop iterations should be used.  The infrastructure doesn't have influence. For the user mode the duration of the benchmark doesn't matter. This is because of interrupts, that only occur in kernel event counts. More interrupt-related instructions will include if the duration of a measurement takes longer.
+
+
+
+>>>>>>> 37e8df5b54c577eaa11865fab07a4e13ba6762c0
