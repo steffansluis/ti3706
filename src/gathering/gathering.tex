@@ -1,4 +1,14 @@
-\paragraph{Performance Counters}``Performance counters are used to measure events that occur events that occur duing program execution.''\cite{PC} Think of events like the number of instructions, loads, bandwidth or the number of executed cycles.
+This chapter will explain how the gathering of useful data will be done. First it will explain the organising aspects, where the second part is about how to present data in the form of performance counters.
+\section{Method of development}
+Software development processes have different methods of software development. Different types of development mean different types of testing. This section show different types of development and how to do performance regression testing on those methods.
+\subsection{Code-and-fix model}
+``The basic model used during the early days of software devolpment contained two steps: write some code and fix the problems in the code'' \cite{boehm1988spiral} This model relies on top programmers and most of the time resulted in poor results\cite{maccormack2003trade}. This `method' is not appropriate for performance regression testing. In a late stadium of developing it will be hard to tell which part of the software has regressions, not mentioning detecting loss in quality.
+
+\subsection{Waterfall method}
+\subsection{Spiral metod}
+\subsection{Scrum}
+
+\section{Performance Counters}``Performance counters are used to measure events that occur events that occur duing program execution.''\cite{PC} Think of events like the number of instructions, loads, bandwidth or the number of executed cycles.
 
 ``The goal of analyzing performance counters is to detect if a performance regression has occured, where the performance regression has occured, and what causes the regression.'' \cite{nguyen2012using}
 
@@ -11,3 +21,6 @@ After determining the location of the performance regression, the reason of the 
 The fact that performance counters are often used by application developers shows that performance counters are very useful. However, performance counters arn't that accurate. Tests with different interfaces (perfmon2 and perfctr) and different counter configurations (user and user+kernel) show that for the combination of the perfmon2 interface and user+kernel configuration the measurement error increases as the number of registers increases as well. \cite{AccuracyPerformanceCounter}
 Also, the type of infrastructure is very dependent. The measurement error reduces a lot when a low-level infrastructure is used, instead of a high-level infrastructure.
 On top of that, for the user+kernel mode the measurement error gets bigger if the duration of the benchmark gets longer. \cite{AccuracyPerformanceCounter} So to make the measurement error smaller, less loop iterations should be used.  The infrastructure doesn't have influence. For the user mode the duration of the benchmark doesn't matter. This is because of interrupts, that only occur in kernel event counts. More interrupt-related instructions will include if the duration of a measurement takes longer.
+
+
+
