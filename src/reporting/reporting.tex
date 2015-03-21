@@ -3,13 +3,27 @@ After acquiring, filtering and comparing the data, it has to be reported. The fo
 As mentioned in chapter 2, the choice of performance metric is very important. When making a report, this is what it will be based around. A report based on cpu time will have a different structure than a report based on bandwith. The performance metrics require additional data to be able to show regressions. This additional data can be number of times the performance regression test has been executed or the number of times a particular function has been called. This kind of data can be usefull to determine if a performance regression has occured. If due to a new functionality a function is expected to be called twice as much since the last revision, a increase in performance can be expected.\newline
 
 \section{Visualization}
-When a report is created, a large amount of data can be usefull. Only it is very hard and error sensitive to look over those numbers. Visualization can be used to show the data in a way that might be easier to comprehend. By using visual representations such as a graph, can be used to spot a change in revisions. Just like the different structure for reports there are also different means to visualize
+When a report is created, a large amount of data can be usefull. Only it is very hard and error sensitive to look over those numbers. Visualization can be used to show the data in a way that might be easier to comprehend. By using visual representations such as a graph, can be used to spot a change in revisions. Just like the different structure for reports there are also different means to visualize results of performance regression testing.\newline
+Transaction response time is the total time to process the request using the various
+system resources \cite{jain2008art}. The transaction profile represents the lower bound value of the transaction response time for that transaction, or in other words, it is the
+transaction response time when the transaction is the only one in the system (no queueing) \cite{ghaith2015anomaly}.\newline
+The transaction profile can be visualised with a bar graph. By comparing the bar graphs of two revisions of the software, it is possible to detect the regressions.
 
 \begin{figure}[h]
 \begin{center}
   \includegraphics[width=0.5\textwidth]{Figures/TP.PNG}
 \end{center}
   \caption{from ``Anomaly detection in performance regression testing by transaction profile estimation''\cite{ghaith2015anomaly}}
+
+\end{figure}
+
+also graph
+
+\begin{figure}[h]
+\begin{center}
+  \includegraphics[width=0.5\textwidth]{Figures/bytegraph.PNG}
+\end{center}
+  \caption{from ``Detecting and analyzing I/O performance regressions''\cite{bezemer2014detecting}}
 
 \end{figure}
 
