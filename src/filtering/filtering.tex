@@ -1,8 +1,15 @@
 \section{Control Charts}
 Detecting if performance regression has occured manually costs a lot of time. Comparing each performance counter with a prior good test is a lot of work. A possible way to analyze the results faster is to use a control chart.
-``The goal of control charts is to automatically determine if a deviation in a process is due to common causes, e.g., input fluctuation, or due to special causes, e.g., defects.'' \cite{nguyen2012using} Control charts are often used to detect problems in manufacturing processes where raw materials are inputs and the completed products are outputs.An example of a control chart can be seen in figure 1. \
+``The goal of control charts is to automatically determine if a deviation in a process is due to common causes, e.g., input fluctuation, or due to special causes, e.g., defects.'' \cite{nguyen2012using} Control charts are often used to detect problems in manufacturing processes where raw materials are inputs and the completed products are outputs.An example of a control chart can be seen in figure 4.1. \
 
-\includegraphics[scale=0.7]{Figures/controlchart.png}
+\begin{figure}[h]
+\begin{center}
+  \includegraphics[scale=0.7]{Figures/controlchart.png}
+\end{center}
+  \caption{from ``Example of a control chart''\cite{nguyen2012using}}
+
+\end{figure}
+
 
 A control chart consists of a baseline data set (CL) and a target data set (Target). A baseline data set contains the results of the prior test. Based on this data set an upper (UCL) and lower limit (LCL) will be decided. The target data set contains the results of the new test.
 
