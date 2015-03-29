@@ -31,9 +31,15 @@ These were only two of the many possibilties to visualize results of performance
 
 \section{Detection of performance regressions}
 When a report and/or a visualization is created the regressions have to be detected. Detecting regressions is done by analyzing the report and finding a spike in performance. A spike in performance does not always mean there is a regression. It is possible that new functionality is added, which can cause a spike in performance. Looking at the figure above a spike in performance can be seen indicated with an ``A''. ``Phenomenon A: The increase was caused by a bugfix. Before this bugfix, data was not committed to the database''\cite{bezemer2014detecting}.\newline
-Detecting regressions is not a discrete process. The measuring of performance is precarious. Because of the precariously measuring, using an accuracy method is often used. An accuracy method shows how close to the previous revisions the new one is. To be precise with this method it is best to run the test a many times as possible. This is however impractical, because it could possibly take months or even longer. A middle ground is needed in order for the testing to be practical.\newline
-\newline
 
+
+\begin{figure}[h]
+\begin{center}
+  \includegraphics[scale=0.7]{Figures/controlchart.png}
+\end{center}
+  \caption{from ``Example of a control chart''\cite{nguyen2012using}}
+
+\end{figure}
 
 
 
