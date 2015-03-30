@@ -3,8 +3,8 @@ After acquiring, filtering and comparing the data, it has to be reported. The fo
 As mentioned in Chapter 2, the choice of performance metric is very important. When making a report, this is what it will be based around. A report based on CPU time will have a different structure than a report based on bandwidth. The performance metrics require additional data to be able to show regressions. This additional data can be number of times the performance regression test has been executed or the number of times a particular function has been called. This kind of data can be usefull to determine if a performance regression has occured. If due to a new functionality a function is expected to be called twice as much since the last revision, a increase in performance can be expected.\newline
 
 \section{Visualization}
-When a report is created, a large amount of data can be usefull. Only it is very hard and error sensitive to look over those numbers. Visualization can be used to show the data in a way that might be easier to comprehend. By using visual representations such as a graph, can be used to spot a change in revisions. Just like the different structure for reports there are also different means to visualize results of performance regression testing.\newline
-Transaction response time is the total time to process the request using the various
+When a report is created, a large amount of data can be useful. Only it is very hard and error sensitive to look over those numbers. Visualization can be used to show the data in a way that might be easier to comprehend. By using visual representations such as a graph, can be used to spot a change in revisions. Just like the different structure for reports there are also different means to visualize results of performance regression testing.\newline
+Transaction response time is the total time to process a request using the various
 system resources \cite{jain2008art}. The transaction profile represents the lower bound value of the transaction response time for that transaction, or in other words, it is the
 transaction response time when the transaction is the only one in the system (no queueing) \cite{ghaith2015anomaly}.\newline
 The transaction profile can be visualised with a bar graph. By comparing the bar graphs of two revisions of the software, it is possible to detect the regressions.
@@ -17,7 +17,7 @@ The transaction profile can be visualised with a bar graph. By comparing the bar
 
 \end{figure}
 
-The performance regression tests can also be represented in a normal graph. In a this graph a lot of revision can be visualized. This way there is a better overview of the performance regressions from the entire project and not just from two particular revisions. The following graph shows the number of written bytes for each revision.
+The performance regression tests can also be represented in a normal graph. In this type of graph a lot of revisions can be visualized at once. This way there is a better overview of the performance regressions from the entire project and not just two particular revisions. The following graph shows the number of written bytes for each revision of a software project.
 
 \begin{figure}[h]
 \begin{center}
@@ -30,7 +30,8 @@ The performance regression tests can also be represented in a normal graph. In a
 These were only two of the many possibilties to visualize results of performance regression testing.
 
 \section{Detection of performance regressions}
-When a report and/or a visualization is created the regressions have to be detected. Detecting regressions is done by analyzing the report and finding a spike in performance. A spike in performance does not always mean there is a regression. It is possible that new functionality is added, which can cause a spike in performance. Looking at the figure above a spike in performance can be seen indicated with an ``A''. ``Phenomenon A: The increase was caused by a bugfix. Before this bugfix, data was not committed to the database''\cite{bezemer2014detecting}.\newline
+When a report and/or a visualization is created any regressions still have to be detected. Detecting regressions is done by analyzing the report and finding a spike in performance. A spike in performance does not always mean there is a regression. It is possible that new functionality is added, which can cause a spike in performance. Looking at the figure above a spike in performance can be seen indicated with an ``A''. ``Phenomenon A: The increase was caused by a bugfix. Before this bugfix, data was not committed to the database''\cite{bezemer2014detecting}.\newline
+Detecting regressions is not a discrete process. The measuring of performance is precarious. Because of the error-prone measurements, often a method that provides an accuracy measurement is used. This shows how close to the previous revisions are to the new one. To be more precise with this method it is best to run the tests a many times as possible. This is however impractical, because it could possibly take months or even longer. Because of this, in performace regression testing, the factor of time has to be weighed against the factor of accuracy.
 
 
 \begin{figure}[h]
