@@ -1,11 +1,11 @@
-The following chapter shows what can be done to report the results of performance regression testing. After acquiring, filtering and comparing the data, it has to be reported. It will touch on visualization of the possible performance regressions. \newline
-\newline
-As mentioned in Chapter 2, the choice of performance metric is very important. When making a report, this is what it will be based around. A report based on CPU time will have a different structure than a report based on bandwidth. The performance metrics require additional data to be able to show regressions. This additional data can be number of times the performance regression test has been executed or the number of times a particular function has been called. This kind of data can be usefull to determine if a performance regression has occured. If due to a new functionality a function is expected to be called twice as much since the last revision, a increase in performance can be expected.\newline
+When the processing of the performance regression testing is done, the results can be reported. The performance metrics have now been acquired, filtered and compared. This chapter is about the reporting of the processed data, it will also touch on the visualization of possible performance regressions. \\
+
+As mentioned in Chapter 3, the choice of an appropriate performance metric is very important. When making a report, this is what it will be based around. A report based on CPU time will have a different structure than a report based on bandwidth. The performance metrics require additional data to be able to show regressions. This additional data can be the number of times the performance regression test has been executed or the number of times a particular function has been called. This kind of data can be useful to determine if a performance regression has occured. If due to a new functionality a function is expected to be called twice as much since the last revision, an increase in performance can be expected.\\
 
 \section{Visualization}
-When a report is created, a large amount of data can be useful. Only it is very hard and error sensitive to look over those numbers. Visualization can be used to show the data in a way that might be easier to comprehend. By using visual representations such as a graph, can be used to spot a change in revisions. Just like the different structure for reports there are also different means to visualize results of performance regression testing.\newline
+When a report is created, a large amount of data can be useful. Only it is very hard and error sensitive to look over those numbers. Visualization can be used to show the data in a way that might be easier to comprehend. This can be done by using visual representations, such as a graph, which can be used to spot a change in revisions. Just like the different structure for reports there are also different means to visualize results of performance regression testing.\\
 \subsection{Control Charts}
-Control charts are a way to compare performance counters during two different revisions. It uses a prior revision as a baseline and sets a upper limit and lower limit. If the new data is within the limits, the performance of the revision is under control.
+Control charts, which are explained in detail at Chapter 4, are a way to compare performance counters during two different revisions. It uses a prior revision as a baseline and sets a upper limit and lower limit. If the new data is within the limits, the performance of the revision is under control.
 \begin{figure}[h]
 \begin{center}
   \includegraphics[scale=0.7]{Figures/controlchart.png}
@@ -17,7 +17,7 @@ Control charts are a way to compare performance counters during two different re
 \subsection{Transaction Profile}
 Transaction response time is the total time to process a request using the various
 system resources \cite{jain2008art}. The transaction profile represents the lower bound value of the transaction response time for that transaction, or in other words, it is the
-transaction response time when the transaction is the only one in the system (no queueing) \cite{ghaith2015anomaly}.\newline
+transaction response time when the transaction is the only one in the system (no queueing) \cite{ghaith2015anomaly}.\\
 The transaction profile can be visualised with a bar graph. By comparing the bar graphs of two revisions of the software, it is possible to detect the regressions.
 
 \begin{figure}[h]
@@ -48,6 +48,7 @@ The performance regression tests can also be represented in a normal graph. In t
   \caption{from ``Detecting and analyzing I/O performance regressions''\cite{bezemer2014detecting}}
 
 \end{figure}
+With the performance regressions visualized and reported, the developer can draw conclusions of the results. The visualization gives a quick overview of the performance regression in the program. So, he/she can adjust their system faster and more effectively by using this knowledge. 
 
 
 %\section{Detection of performance regressions}
