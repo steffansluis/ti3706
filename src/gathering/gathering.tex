@@ -1,25 +1,23 @@
-Once the testing process has been organised to facilitate the particular software development method that is being used, the testing can finally begin. The next challenge that presents itself is what to test for. This chapter discusses what information is relevant to the performance of software and how to handle that information in order to obtain the most accurate representation of the underlying performance.
+Once the testing process has been organised to facilitate the particular software development method that is being used, the testing can finally begin. The next challenge that presents itself is what to test for. This chapter explains what information is relevant to the performance of software and how to handle that information in order to obtain the most accurate representation of the underlying performance.
+
+Detecting regressions is not a discrete process. The measuring of performance is precarious. Because of the precariously measuring, using an accuracy method is often used. An accuracy method shows how close to the previous revisions the new one is. To be precise with this method it is best to run the test a many times as possible. This is however impractical, because it could possibly take months or even longer. A middle ground is needed in order for the testing to be practical.
 
 \section{Types of data: performance counters}
-Performance counters are used to measure events that occur during program execution\cite{PC}. Examples are: the number of instructions, loads, bandwidth or the number of executed cycles.
+``Performance counters provide a valuable insight into dynamic program behavior for applications, compilers, operating systems and hardware.''\cite{zagha1996performance}
+They are used to measure events that occur during program execution. Examples are: the number of instructions, loads, bandwidth or the number of executed cycles.
 
 ``The goal of analyzing performance counters is to detect if a performance regression has occured, where the performance regression has occured, and what causes the regression'' \cite{nguyen2012using}.
 
-To detect if performance regressions occur, two different tests will be run: a target run and a baseline run. The target run is the new test run, where the baseline run is a good past run. On both tests equivalent performance counters can be used as input to detect if performance regressiond have occured by comparing the output of the tests. Comparing the output of the tests is a big challenge, especially in big complex software systems.
+To detect if a certain performance counter is the reason of performance regression, the state of the performance counter needs to be known. The state of a performance counter can be checked via a register. A register can be read or written via kernel-level processes. The states of two different tests need to be compared to check if performance regression ahs occured. These tests are a target run and a baseline run. The target run is the new test run, where the baseline run is a good past run. On both tests equivalent performance counters can be used as input to detect if performance regressiond have occured by comparing the output of the tests. Comparing the output of the tests is a big challenge, especially in big complex software systems.
 
 If it is known that a performance regression has occured, the next problem is to detect where the performance regression has appeared. Big software systems consist of many types of components, and each component may have many instances. Detecting where the perfomance regressions have shown up is very difficult, because there are many performance counters for each instance of each component. This can be very time consuming.
 
-\section{Accuracy and meaning of performance metrics}
 After determining the location of the performance regressions, the reason of the performance regressions needs to be determined. ``Understanding the kind of problem usually requires static analysis of source code'' \cite{nguyen2012using}.
 
-The fact that performance counters are often used by application developers shows that performance counters are very useful. However, performance counters are not that accurate. Tests have shown some factors can increase or decrease the accuracy of performance counters.
+\section{Accuracy and meaning of performance metrics}
+The fact that performance counters are often used by application developers shows that performance counters are very useful. However, performance counters are not always accurate. Tests have shown some factors can increase or decrease the accuracy of the results of performance counters. \cite{AccuracyPerformanceCounter}
 
-For instance, the measurement error possibly increases as the number of registers increases too. However, this is dependent on the counter configuration and the interface used: experiments with two different interfaces and two different counter configurations show different results, and for only one of the four combinations of the interface and counter configuration the measurement error increases\cite{AccuracyPerformanceCounter}. So most of the times the number of registers does not matter.
+For instance, the number of registers used in a test depends on the accuracy of a performance counter. Performance counters become less accurate as the number of registers increases. So to have reliable results, a test should not test too many registers. \cite{AccuracyPerformanceCounter}.
 
-Also, the type of infrastructure is very dependent. The measurement error reduces a lot when a low-level infrastructure is used, instead of a high-level infrastructure\cite{AccuracyPerformanceCounter}.
+Also, the type of infrastructure is very dependent. The measurement error reduces a lot when a low-level infrastructure is used, instead of a high-level infrastructure. \cite{AccuracyPerformanceCounter}.
 
-On top of that, for the user+kernel mode the measurement error gets bigger if the duration of the benchmark gets longer\cite{AccuracyPerformanceCounter}. So to make the measurement error smaller, less loop iterations should be used.  For the user mode the duration of the benchmark does not matter. This is because of interrupts, that only occur in kernel event counts. More interrupt-related instructions will include if the duration of a measurement takes longer.
-
-LEES DIT SVP AUB DOOR EN ZET HET ERGENS GOED HIER NEER. \\
-Detecting regressions is not a discrete process. The measuring of performance is precarious. Because of the precariously measuring, using an accuracy method is often used. An accuracy method shows how close to the previous revisions the new one is. To be precise with this method it is best to run the test a many times as possible. This is however impractical, because it could possibly take months or even longer. A middle ground is needed in order for the testing to be practical.\newline
-\newline
