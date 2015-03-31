@@ -1,0 +1,42 @@
+
+This chapter describes how the results of performance regression testing can be processed to filter out insignificant information, detect possible performance regressions and find the responsible parts of the software. The chapter is divided into sections corresponding with each of these subjects, where each section describes the different problems that can occur and how to deal with them.
+
+\section{Abstracting the test results}
+The first step of processing is to find and deal with parts of the result data that misrepresent the performance of the software. This includes outliers and skewed measurements, e.g. because of errors during testing, but also relates to removing the influence of external factors, such as the system load during testing.
+
+\subsection{Load-independent comparison}
+Performance metrics depend on the system load during execution of the test suite. This makes it difficult to correctly identify performance regressions using load-dependent results. Jiang et al present an automated way to abstract load testing data and analyze the behaviour of the system. \cite{jiang2010automated} Even though it is not intented to be used for performance regression testing specifically, it uses performance counters to compare system performance to predefined criteria and as such present a solution to the load dependency of performance counters.
+
+Model based testing leverages the advantage of being load-independent against the tasks of having to keep the model up-to-date. The load-independence also only goes as far as the different load for which the model was solved, which means it is not a viable method for detecting performance regressions when system load behaves in ways that was not anticipated in advance. Mi et al offer a way to derive a performance signature that is based on the latency of a transaction and the utilization of system resources, which are adjusted for the existence of outliers \cite{mi2008analysis}.
+
+\subsection{Association rules}
+In addition to being dependent on the system load, some performance counters might depend on others. By normalizing and discretizing performance counters and correlating the results against a historal dataset Foo et al are able to derive a perforance signature \cite{foo2010mining} consisting of association rules between performance counters. An example of such a signature could be \{Arrival Rate = Medium, CPU utilization = Medium, Throughput = Medium\}.
+
+An association rule has a premise and a consequent. A rule predicts the occurence of a consequent, based on a premise. Association rules can be derived from a frequent item set. ``A frequent item set describes a set of metrics that appear together frequently''\cite{foo2010mining}. To discover a frequent item set, the Apriori algorithm can be used. The Apriori algorithm uses support and confidence to reduce the amount of candidate rules generated:
+``Support is the frequency at which all items in an association rule are observed together'' \cite{foo2010mining}. If the support is low, the assocation should not be analyzed, but if the support is high it should. Confidence is the probability that the assocation rule's premise leads to the consequent and has a value between 0 and 1. If the value is 0, it means that the confidence has not changed for a new test, and if the value is 1 the confidence of a rule is totally different. A threshold is created to filter out the consequences of the rules that have changed to much.
+
+\section{Detecting possible performance regressions}
+In combination with statistical techniques, association rules enable analysts to automatically flag violations of rules in new tests and detect possible performance regressions with a certain confidence. Other ways to detect performance regressions in a system also require a method of comparing the performance of different versions of the system is required. Since manual comparison is prone to errors and not viable for large amounts of performance metrics, a method that can automatically compare the performance of different revisions is preferred. The following are different ways to detect if a performance regression has occured, some of which can be automated and some of which require manual analysis.
+
+\subsection{Control charts}
+Detecting if performance regression has occured manually costs a lot of time. Comparing each performance counter with a prior good test is a lot of work. A possible way to analyze the results faster is to use a control chart.
+``The goal of control charts is to automatically determine if a deviation in a process is due to common causes, e.g., input fluctuation, or due to special causes, e.g., defects'' \cite{nguyen2012using}. Control charts are often used to detect problems in manufacturing processes where raw materials are inputs and the completed products are outputs. An example of a control chart can be seen in Figure 4.1.
+
+A control chart consists of a baseline data set (CL) and a target data set (Target). A baseline data set contains the results of the prior test. Based on this data set an upper (UCL) and lower limit (LCL) will be decided. The target data set contains the results of the new test.
+
+From these two data sets the violation ratio can be calculated. This is the percentage of the amount of targets outside the upper and lower limit. If the violation ratio is too high, a performance regression might have occured. In figure 1 only a few targets are outside the upper and lower limit, so most probably no regression has occured.
+
+It now seems easy to detect if performance regression occurs: a certain threshold on the maximum allowed violation ratio can be chosen, and if the violation ratio is higher than this threshold, performance regression has occurred. Unfortunately, this is not the case. There are some reasons that make it hard to detect performance regression. If the violation ratio is low, the probability that performance regression has occurred is low as well. A high violation ratio does not always mean that performance regression has occurred. Some performance counters are inconsistent, and show different results on the same input data. Because of this, it is possible that the violation ratio is higher than the chosen threshold but no performance regression has occurred. To avoid this, the prior test will be executed again after the new test.
+
+\subsection{Profiling}
+One way of comparing revisions is by creating a profile for each version of the software. This profile can then be compared with the profile of previous verions. There are different ways to do this and they are likely to yield different results.
+\\\\
+\textbf{Hier moet nog meer info over het maken van profiles}
+
+\section{Tracing the cause of performance problems}
+Tracing the cause of anomalies in performance can help in indentifying if something is a performance regression and what might have caused it. There are several approaches that aim to identify the underlying cause of performance regressions.
+
+Ghaith et al build on the principle of load-independent and model based testing by using a queueing network to model the underlying system and using historical testing data to tune the model to the expected performance under various workloads. \cite{ghaith2013profile} This approach combines a transaction profile, a signature of the system resources utilized by some elementary action of the system, with historical testing data. A transaction profile can be obtained using statistical techniques for determing the service demands based on resource utilization \cite{casale2008robust} or response time \cite{kraft2009estimating}. Since a queueing model is used to represent each component, the source of a performance regression can be traced back to the components in the queueing model that violate their transaction profile.
+
+If the performance metrics measure system level activity, it is difficult to trace a performance regression back to the function call that causes it. By probing I/O write operations on application level, Bezemer et al are able to create a profile for the amount of I/O per function \cite{bezemer2014detecting}. This allows them to trace performance problems back to changes in specific function by comparing performance metrics with the version control system of the tested software. Not only does this provide the cause of the problem, it enables developers to use performance regression testing to guide optimizing performance.
+
