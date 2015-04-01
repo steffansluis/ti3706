@@ -8,11 +8,15 @@ counters. Nguyen et al propose an approach that uses control charts, a statistic
 
 Client-server applications are widespread nowadays. Understanding the cascading effects of the various tasks that are sprung by a single request-reply transaction is a challenging task. Kraft et al address the issue of efficiently diagnosing essential performance changes in application behavior in order to provide timely feedback to  application designers and service providers \cite{kraft2009estimating}. They propose a new approach based on an application signature built on the concept of transaction latency profiles and transaction signatures. The approach is non-intrusive and based on monotoring data that is typically available in enterprise applications.
 
-Transaction profling using larger deployments contains a local optimum which not have been experimented with, a plan to use different search techniques could be a possible research for the future. \cite{ghaith2013} Transaction profiles from output load runs, which include the response time and resource utilization only works in simple deployments, due to single node assumption they require multiple runs with multiple load. This means that the time spent on testing with the use of transaction profiling can take a long time. 
+Transaction profiling using larger deployments contains a local optimum which not have been experimented with, a plan to use different search techniques could be a possible research for the future. \cite{ghaith2013profile} Transaction profiles from output load runs, which include the response time and resource utilization only works in simple deployments, due to single node assumption they require multiple runs with multiple load. This means that the time spent on testing with the use of transaction profiling can take a long time.
 
-The identification of performance regressions can be hard. \cite{} Service Level Objectives are used to determine if anomalies have occurred, but Service Level Objectives are not used very often. Identifying performance regressions manually can be subjective. Individual analists can overlook some important performance metrics. Automated identification can be hard as well, because there could be phase shifts in the performance tests, spikes can be different for each test. This will make it hard to use classifier techniques. 
+When using a transaction profile, the amount of data that populates the database can have an affect on the profile. This data can mainly affect the database CPU and I/O. \cite{ghaith2015anomaly}
 
-The filtering technique used in the paper did not measure some performance regressions. It only used the Apriori algorithm, where other filtering can be necessary to detect undefined performance regressions. 
+In Chapter 3 a I/O gathering method is explained. This method uses a considerable amount of overhead. Thus the use of time sensitive metrics is unreliable. \cite{bezemer2014detecting}
 
-If performance regressions are in the in the system from the start of the development, it will not be detected. 
+The identification of performance regressions can be hard. \cite{foo2010mining} Service Level Objectives are used to determine if anomalies have occurred, but Service Level Objectives are not used very often. Identifying performance regressions manually can be subjective. Individual analists can overlook some important performance metrics. Automated identification can be hard as well, because there could be phase shifts in the performance tests, spikes can be different for each test. This will make it hard to use classifier techniques.
+
+The filtering technique used in the paper did not measure some performance regressions. It only used the Apriori algorithm, where other filtering can be necessary to detect undefined performance regressions.
+
+If performance regressions are in the in the system from the start of the development, it will not be detected.
 
