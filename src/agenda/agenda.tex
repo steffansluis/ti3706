@@ -1,0 +1,22 @@
+Spanning the years and the papers that have been discussed in this report, a lot of problems and possible solutions are introduced. This section provides an overview of the problems and solution per paper, as well as a list of problems that are yet to be solved.\\
+
+Performance regression testing and load testing share the dependency of results on the system load and the problem of detecting performance problems. Jiang et al propose an automated approach to detect functional and performance problems that scales well to enterprise systems and provides high precision results \cite{jiang2010automated}. It can be used to analyze the behavior of a system during a load test, and with regards to performance regression testing, to abstract over the load testing data, allowing for load-independent conclusions to be drawn.
+
+Analyzing load tests results to detect performance regression is
+very time consuming due to the large amount of performance
+counters. Nguyen et al propose an approach that uses control charts, a statistical process control technique. to assist performance engineers in identifying test runs with performance regressions, pinpointing the components which cause the regressions, and determining the causes of regressions in load tests \cite{nguyen2012using}.
+
+Client-server applications are widespread nowadays. Understanding the cascading effects of the various tasks that are sprung by a single request-reply transaction is a challenging task. Kraft et al address the issue of efficiently diagnosing essential performance changes in application behavior in order to provide timely feedback to  application designers and service providers \cite{kraft2009estimating}. They propose a new approach based on an application signature built on the concept of transaction latency profiles and transaction signatures. The approach is non-intrusive and based on monotoring data that is typically available in enterprise applications.
+
+Transaction profiling using larger deployments contains a local optimum which not have been experimented with, a plan to use different search techniques could be a possible research for the future. \cite{ghaith2013profile} Transaction profiles from output load runs, which include the response time and resource utilization only works in simple deployments, due to single node assumption they require multiple runs with multiple load. This means that the time spent on testing with the use of transaction profiling can take a long time.
+
+When using a transaction profile, the amount of data that populates the database can have an affect on the profile. This data can mainly affect the database CPU and I/O. \cite{ghaith2015anomaly}
+
+In Chapter 3 a I/O gathering method is explained. This method uses a considerable amount of overhead. Thus the use of time sensitive metrics is unreliable. \cite{bezemer2014detecting}
+
+The identification of performance regressions can be hard. \cite{foo2010mining} Service Level Objectives are used to determine if anomalies have occurred, but Service Level Objectives are not used very often. Identifying performance regressions manually can be subjective. Individual analists can overlook some important performance metrics. Automated identification can be hard as well, because there could be phase shifts in the performance tests, spikes can be different for each test. This will make it hard to use classifier techniques.
+
+The filtering technique used in the paper did not measure some performance regressions. It only used the Apriori algorithm, where other filtering can be necessary to detect undefined performance regressions.
+
+If performance regressions are in the in the system from the start of the development, it will not be detected.
+
