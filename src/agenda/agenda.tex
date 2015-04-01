@@ -14,6 +14,7 @@ When using a transaction profile, the amount of data that populates the database
 
 In Chapter 3 a I/O gathering method is explained. This method uses a considerable amount of overhead. Thus the use of time sensitive metrics is unreliable. \cite{bezemer2014detecting}
 
+Performance counters can be difficult to configure, may not be programmable or readable from user-level code, and can not discriminate between events caused by different software threads. Software instructions executed to access a counter may perturb that same counter. To preturb performance counters less some factors are found, like the type of infrastructure that is used, and the counter configuration. However, a lot more factors can be found in further studies.\cite{AccuracyPerformanceCounter}
 The identification of performance regressions can be hard. \cite{foo2010mining} Service Level Objectives are used to determine if anomalies have occurred, but Service Level Objectives are not used very often. Identifying performance regressions manually can be subjective. Individual analists can overlook some important performance metrics. Automated identification can be hard as well, because there could be phase shifts in the performance tests, spikes can be different for each test. This will make it hard to use classifier techniques.
 
 The filtering technique used in the paper did not measure some performance regressions. It only used the Apriori algorithm, where other filtering can be necessary to detect undefined performance regressions.
